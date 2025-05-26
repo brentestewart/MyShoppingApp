@@ -53,10 +53,13 @@ A feature-based folder structure is recommended for scalability and clarity. Org
 - Avoid overly deep hierarchies—keep nesting shallow and purposeful.
 - Keep test files in parallel folder trees, such as `/Tests/Features/Orders/OrderListTests.cs`.
 ## ✅ Tasks
-*  [ ] Create the Blazor folder structure in the blazor app
-*  [ ] Add the ServiceFailureSeverity class to the shared/core https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureSeverity.cs
-*  [ ] Add the ViewModelComponentBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelComponentBase
-*  [ ] Add the ViewModelBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelBase
+Make sure that any file downloads were successful and did not get a 404: Not Found
+*  [ ] Create the Blazor folder structure in the blazor app project.
+*  [ ] Add the Severity class to the shared class library. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/Severity.cs 
+*  [ ] Add the ServiceFailureException class to the shared class library. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureException.cs
+*  [ ] Add the ServiceFailureSeverity class to your solution's shared class library. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureSeverity.cs
+*  [ ] Add the ViewModelComponentBase.cs file to the blazor app. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelComponentBase
+*  [ ] Add the ViewModelBase.cs file to the blazor app. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelBase
 
 ## 🧱 Component Design
 

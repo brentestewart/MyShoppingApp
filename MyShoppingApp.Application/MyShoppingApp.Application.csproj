@@ -1,5 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\MyShoppingApp.Domain\MyShoppingApp.Domain.csproj" />
+    <ProjectReference Include="..\MyShoppingApp.Shared\MyShoppingApp.Shared.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
