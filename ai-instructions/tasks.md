@@ -96,7 +96,7 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [x] Implement StoreItem service (CRUD logic)
 - [x] Implement ShoppingList service (CRUD logic, archive/unarchive)
 - [x] Implement Group service (CRUD logic, manage members)
-- [ ] Implement User service (profile, registration, group membership)
+- [x] Implement User service (profile, registration, group membership)
 
 ### D. 🌐 API Endpoint Tasks
 - [ ] Create API endpoints for Store CRUD
