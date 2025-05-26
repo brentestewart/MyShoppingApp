@@ -3,12 +3,14 @@
   <ItemGroup>
     <ProjectReference Include="..\MyShoppingApp.Application\MyShoppingApp.Application.csproj" />
     <ProjectReference Include="..\MyShoppingApp.Shared\MyShoppingApp.Shared.csproj" />
+    <ProjectReference Include="..\MyShoppingApp.Infrastructure\MyShoppingApp.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>myshoppingapp-web-2024</UserSecretsId>
   </PropertyGroup>
 
 </Project>
