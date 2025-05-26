@@ -109,7 +109,7 @@ These servers are a dependency for other tasks, so they should appear near the t
 ### E. 🖥️ Blazor UI Tasks
 - [x] Clean up the Blazor app and make sure to remove existing files that are not needed and move any files that are in the wrong location
 - [x] Build Blazor page: Store List
-- [ ] Build Blazor page: Store Details
+- [x] Build Blazor page: Store Details
 - [ ] Build Blazor page: Create Store
 - [ ] Build Blazor page: Edit Store
 - [ ] Build Blazor page: Delete Store (with confirmation)
@@ -138,4 +138,10 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [ ] Build Blazor page: User Profile
 - [ ] Build Blazor page: User Registration
 - [ ] Build Blazor page: User Login (if not handled by external auth)
-- [ ] Build Blazor page: Manage Group Memberships 
+- [ ] Build Blazor page: Manage Group Memberships
+
+---
+
+## Other Completed Tasks
+- [x] Secure Supabase config with appsettings/user-secrets
+- [x] Clean DI setup 

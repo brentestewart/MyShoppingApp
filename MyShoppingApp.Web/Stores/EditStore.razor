@@ -1,0 +1,72 @@
+@page "/stores/edit/{Id:guid}"
+@inherits Core.ViewModels.ViewModelComponentBase<EditStoreViewModel>
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+
+<h3>Edit Store</h3>
+
+@if (ViewModel.IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="ViewModel.Store" OnValidSubmit="ViewModel.UpdateAsync">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <label>Name:</label>
+            <InputText @bind-value="ViewModel.Store.Name" />
+        </div>
+        <div>
+            <label>Description:</label>
+            <InputText @bind-value="ViewModel.Store.Description" />
+        </div>
+        <div>
+            <label>Street:</label>
+            <InputText @bind-value="ViewModel.Store.Address.Street" />
+        </div>
+        <div>
+            <label>City:</label>
+            <InputText @bind-value="ViewModel.Store.Address.City" />
+        </div>
+        <div>
+            <label>State:</label>
+            <InputText @bind-value="ViewModel.Store.Address.State" />
+        </div>
+        <div>
+            <label>Zip Code:</label>
+            <InputText @bind-value="ViewModel.Store.Address.ZipCode" />
+        </div>
+        <div>
+            <label>Website:</label>
+            <InputText @bind-value="ViewModel.Store.Website" />
+        </div>
+        <div>
+            <label>Aisles (comma separated):</label>
+            <InputText @bind-value="ViewModel.AislesInput" />
+        </div>
+        <div>
+            <label>Group Id:</label>
+            <InputText @bind-value="ViewModel.GroupIdInput" />
+        </div>
+        <button type="submit">Update</button>
+    </EditForm>
+}
+
+@if (!string.IsNullOrEmpty(ViewModel.Message))
+{
+    <div>@ViewModel.Message</div>
+}
+
+<a href="/stores">Back to Store List</a>
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadAsync(Id);
+    }
+} 
