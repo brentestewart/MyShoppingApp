@@ -1,0 +1,42 @@
+@using MyShoppingApp.Web.Core.ViewModels
+@page "/stores"
+@inherits ViewModelComponentBase<StoreListViewModel>
+
+<PageTitle>Stores</PageTitle>
+
+<h3>Store List</h3>
+
+@if (ViewModel.IsBusy)
+{
+    <p>Loading stores...</p>
+}
+else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
+}
+else if (ViewModel.Stores.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Group</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var store in ViewModel.Stores)
+            {
+                <tr>
+                    <td>@store.Name</td>
+                    <td>@store.Description</td>
+                    <td>@store.GroupId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No stores found.</p>
+} 

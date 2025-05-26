@@ -108,7 +108,7 @@ These servers are a dependency for other tasks, so they should appear near the t
 
 ### E. 🖥️ Blazor UI Tasks
 - [x] Clean up the Blazor app and make sure to remove existing files that are not needed and move any files that are in the wrong location
-- [ ] Build Blazor page: Store List
+- [x] Build Blazor page: Store List
 - [ ] Build Blazor page: Store Details
 - [ ] Build Blazor page: Create Store
 - [ ] Build Blazor page: Edit Store

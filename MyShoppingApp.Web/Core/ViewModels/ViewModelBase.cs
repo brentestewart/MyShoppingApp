@@ -2,7 +2,7 @@ using MyShoppingApp.Shared;
 
 namespace MyShoppingApp.Web.Core.ViewModels;
 
-internal abstract class ViewModelBase
+public abstract class ViewModelBase
 {
     public Action StateHasChanged { get; set; } = () => { };
     public Action<string> ToastOk { get; internal set; } = (s) => { };
@@ -10,6 +10,8 @@ internal abstract class ViewModelBase
     public Action<string> ToastSuccess { get; internal set; } = (s) => { };
     public Action<string> ToastWarn { get; internal set; } = (s) => { };
     public Action<string> ToastError { get; internal set; } = (s) => { };
+    public bool IsBusy { get; set; }
+    public string? ErrorMessage { get; set; }
 
     public virtual Task OnInitializedAsync()
     {

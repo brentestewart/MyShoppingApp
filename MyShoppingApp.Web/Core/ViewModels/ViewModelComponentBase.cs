@@ -3,7 +3,7 @@ using MyShoppingApp.Shared;
 
 namespace MyShoppingApp.Web.Core.ViewModels;
 
-internal class ViewModelComponentBase<TViewModel> : ComponentBase where TViewModel : ViewModelBase
+public class ViewModelComponentBase<TViewModel> : ComponentBase where TViewModel : ViewModelBase
 {
     public ViewModelComponentBase()
     {
