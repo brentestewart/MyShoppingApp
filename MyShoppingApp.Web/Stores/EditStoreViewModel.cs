@@ -61,4 +61,18 @@ public class EditStoreViewModel : ViewModelBase
             Message = $"Error: {ex.Message}";
         }
     }
+
+    public async Task<bool> DeleteAsync()
+    {
+        try
+        {
+            await _storeService.DeleteAsync(Store.Id);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Message = $"Error deleting store: {ex.Message}";
+            return false;
+        }
+    }
 } 

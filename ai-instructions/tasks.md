@@ -110,8 +110,8 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [x] Clean up the Blazor app and make sure to remove existing files that are not needed and move any files that are in the wrong location
 - [x] Build Blazor page: Store List
 - [x] Build Blazor page: Store Details
-- [ ] Build Blazor page: Create Store
-- [ ] Build Blazor page: Edit Store
+- [x] Build Blazor page: Create Store
+- [x] Build Blazor page: Edit Store
 - [ ] Build Blazor page: Delete Store (with confirmation)
 - [ ] Add Store management to navigation/menu
 - [ ] Build Blazor page: Item List

@@ -52,6 +52,28 @@ else
         </div>
         <button type="submit">Update</button>
     </EditForm>
+
+    <button class="btn btn-danger" @onclick="ShowDeleteDialog">Delete</button>
+
+    @if (ShowDeleteConfirmation)
+    {
+        <div class="modal-backdrop">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Delete</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this store?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" @onclick="ConfirmDelete">Delete</button>
+                        <button class="btn btn-secondary" @onclick="CancelDelete">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
 
 @if (!string.IsNullOrEmpty(ViewModel.Message))
@@ -65,8 +87,36 @@ else
     [Parameter]
     public Guid Id { get; set; }
 
+    [Inject]
+    private NavigationManager Navigation { get; set; } = default!;
+
     protected override async Task OnInitializedAsync()
     {
         await ViewModel.LoadAsync(Id);
+    }
+
+    private bool ShowDeleteConfirmation = false;
+
+    private void ShowDeleteDialog()
+    {
+        ShowDeleteConfirmation = true;
+    }
+
+    private void CancelDelete()
+    {
+        ShowDeleteConfirmation = false;
+    }
+
+    private async Task ConfirmDelete()
+    {
+        var success = await ViewModel.DeleteAsync();
+        if (success)
+        {
+            Navigation.NavigateTo("/stores");
+        }
+        else
+        {
+            ShowDeleteConfirmation = false;
+        }
     }
 } 
