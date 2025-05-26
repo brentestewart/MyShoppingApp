@@ -16,6 +16,8 @@ The application supports multiple users and allows for shared access through use
 | **Git Repo Name** | MyShoppingApp    |
 | **Git Repo Visibility** | public      |
 | **Blazor App Project Template Settings** | template: Blazor Web App, Interactivity: Server Side Render, No sample pages |
+| **Supabase Organization** | BrentStewart |
+| **Supabase Project Name** | MyShoppingApp |
 
 ---
 ## 🌍 Core Functionality
@@ -76,6 +78,7 @@ Users can maintain multiple shopping lists, each associated with a store. A list
 ## 🗄️ Create DB Tasks
 - [ ] Create DB for User (fields: Name, Email, etc.)
 - [ ] Create DB for Group (fields: Name, Description, Members)
+- [ ] Create DB for Group Membership (join table: user_id, group_id, role, joined_at)
 - [ ] Create DB for Store (fields: Name, Description, Address, Website, Aisles, GroupId)
 - [ ] Create DB for Item (fields: Name, Description, Category, GroupId)
 - [ ] Create DB for ShoppingList (fields: Title, StoreId, GroupId, IsArchived)

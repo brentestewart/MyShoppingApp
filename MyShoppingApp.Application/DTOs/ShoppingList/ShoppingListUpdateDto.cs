@@ -1,0 +1,10 @@
+namespace MyShoppingApp.Application.DTOs.ShoppingList;
+
+public class ShoppingListUpdateDto
+{
+    public Guid Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public Guid StoreId { get; set; }
+    public Guid? GroupId { get; set; }
+    public bool IsArchived { get; set; }
+} 

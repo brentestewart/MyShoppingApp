@@ -58,41 +58,47 @@ These servers are a dependency for other tasks, so they should appear near the t
 ## 6. Supabase Storage Setup
 - [x] Add the Supabase NuGet package to the project/layer that should directly access the data ([https://www.nuget.org/packages/supabase](https://www.nuget.org/packages/supabase))
 
+## 6.5. Supabase Setup (Pre-DB Tasks)
+- [x] Get all Supabase settings from the app description file.
+- [x] Check to see if the project already exists in Supabase
+- [x] If it doesn't exist, then create it. Prompt me for any passwords.
+
 ---
 
 ## 7. App Implementation Tasks (from app-description.md)
 
-### 🗄️ Create DB Tasks
-- [ ] Create DB for User (fields: Name, Email, etc.)
-- [ ] Create DB for Group (fields: Name, Description, Members)
-- [ ] Create DB for Store (fields: Name, Description, Address, Website, Aisles, GroupId)
-- [ ] Create DB for Item (fields: Name, Description, Category, GroupId)
-- [ ] Create DB for ShoppingList (fields: Title, StoreId, GroupId, IsArchived)
-- [ ] Create DB for StoreItem (fields: StoreId, ItemId, Price, Aisle, Notes)
+### A. 🗄️ Create DB Tasks
+- [x] Create DB for User (fields: Name, Email, etc.)
+- [x] Create DB for Group (fields: Name, Description, Members)
+- [x] Create DB for Group Membership (join table: user_id, group_id, role, joined_at)
+- [x] Create DB for Store (fields: Name, Description, Address, Website, Aisles, GroupId)
+- [x] Create DB for Item (fields: Name, Description, Category, GroupId)
+- [x] Create DB for ShoppingList (fields: Title, StoreId, GroupId, IsArchived)
+- [x] Create DB for StoreItem (fields: StoreId, ItemId, Price, Aisle, Notes)
 
-### 🧩 Model/Entity/DTO Tasks
-- [ ] Create Store model/entity
-- [ ] Define Store DTOs (Create, Update, Read, List)
-- [ ] Create Item model/entity
-- [ ] Define Item DTOs (Create, Update, Read, List)
-- [ ] Create StoreItem model/entity
-- [ ] Define StoreItem DTOs (Create, Update, Read, List)
-- [ ] Create ShoppingList model/entity
-- [ ] Define ShoppingList DTOs (Create, Update, Read, List)
-- [ ] Create Group model/entity
-- [ ] Define Group DTOs (Create, Update, Read, List)
-- [ ] Create User model/entity
-- [ ] Define User DTOs (Profile, Registration, etc.)
+### B. 🧩 Model/Entity/DTO Tasks
+- [x] Create Store model/entity
+- [x] Define Store DTOs (Create, Update, Read, List)
+- [x] Create Item model/entity
+- [x] Define Item DTOs (Create, Update, Read, List)
+- [x] Create StoreItem model/entity
+- [x] Define StoreItem DTOs (Create, Update, Read, List)
+- [x] Create ShoppingList model/entity
+- [x] Define ShoppingList DTOs (Create, Update, Read, List)
+- [x] Create Group model/entity
+- [x] Define Group DTOs (Create, Update, Read, List)
+- [x] Create User model/entity
+- [x] Define User DTOs (Profile, Registration, etc.)
 
-### 🛠️ Service Tasks
-- [ ] Implement Store service (CRUD logic)
+### C. ��️ Service Tasks
+- [x] Implement Store service (CRUD logic)
 - [ ] Implement Item service (CRUD logic)
 - [ ] Implement StoreItem service (CRUD logic)
 - [ ] Implement ShoppingList service (CRUD logic, archive/unarchive)
 - [ ] Implement Group service (CRUD logic, manage members)
 - [ ] Implement User service (profile, registration, group membership)
 
-### 🌐 API Endpoint Tasks
+### D. 🌐 API Endpoint Tasks
 - [ ] Create API endpoints for Store CRUD
 - [ ] Create API endpoints for Item CRUD
 - [ ] Create API endpoints for StoreItem CRUD
@@ -100,7 +106,7 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [ ] Create API endpoints for Group CRUD and membership
 - [ ] Create API endpoints for User profile and group membership
 
-### 🖥️ Blazor UI Tasks
+### E. 🖥️ Blazor UI Tasks
 - [ ] Clean up the Blazor app and make sure to remove existing files that are not needed and move any files that are in the wrong location
 - [ ] Build Blazor page: Store List
 - [ ] Build Blazor page: Store Details

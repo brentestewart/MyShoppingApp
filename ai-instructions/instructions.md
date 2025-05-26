@@ -16,6 +16,7 @@ These documents contain the standards, best practices, and architecture details 
 - [source-control.md](source-control.md)
 - [architecture-blazor-enterprise.md](architecture-blazor-enterprise.md)
 - [blazor-best-practices.md](blazor-best-practices.md)
+- [supabse.md](supabase.md)
 - [storage-supabase.md](storage-supabase.md)
 - [app-description.md](app-description.md)
 - [mcp-servers.md](mcp-servers.md)
