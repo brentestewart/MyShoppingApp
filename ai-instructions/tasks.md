@@ -107,7 +107,7 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [ ] Create API endpoints for User profile and group membership
 
 ### E. 🖥️ Blazor UI Tasks
-- [ ] Clean up the Blazor app and make sure to remove existing files that are not needed and move any files that are in the wrong location
+- [x] Clean up the Blazor app and make sure to remove existing files that are not needed and move any files that are in the wrong location
 - [ ] Build Blazor page: Store List
 - [ ] Build Blazor page: Store Details
 - [ ] Build Blazor page: Create Store
