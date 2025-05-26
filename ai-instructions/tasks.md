@@ -1,0 +1,133 @@
+# Aggregated Tasks
+
+## 1. MCP Servers (Initialization)
+These servers are a dependency for other tasks, so they should appear near the top of any aggregate task lists.
+
+-  [x] Verify access to the **GitHub** MCP Server
+    - **Command:** `run get_me - github (MCP Server)`
+    - **Purpose:** Ensures AI has access to git hub data.
+
+  -  [x] Verify access to the **Supabase** MCP Server
+    - **Command:** `run list_projects - supabase (MCP Server)`
+    - **Purpose:** Confirms access to Supabase data.
+
+  -  [x] Verify access to the **Context7** MCP Server
+    - **Command:** `run resolve-library-id - Context7 (MCP Server)`
+    - **Purpose:** Confirms connectivity to the Context7 documentation.
+
+---
+
+## 2. Coding Standards
+-  [x] Verify you have read and understood the contents of the `coding-standards-dot-net.md` document.
+
+---
+
+## 3. Source Control Setup
+- [x] Create a new local Git repository for the project
+- [x] Initialize the repository with a suitable `.gitignore` file
+- [x] Add the .cursor directory to the `.gitignore` file if it exists
+- [x] Create a `README.md` file with the project name and short description
+- [x] Create an initial commit with the base project files
+- [x] Create a new **private** GitHub repository (unless specified as public in the project description)
+- [x] Link the local Git repository to the GitHub repository
+- [x] Push the initial commit to GitHub
+- [x] Confirm that the repository is accessible via GitHub
+
+---
+
+## 4. Architecture: Blazor Enterprise
+*  [x] Create the .NET Solution file 
+*  [x] Create the Shared .NET Class Library project
+*  [x] Create the Infrastructure .NET Class Library project
+*  [x] Create the Domain .NET Class Library project
+*  [x] Create the Application .NET Class Library project
+*  [x] Create the Web Blazor Web App using the settings listed in the [[app-description.md]] file use the BlazorBestPractices.md file for the file structure
+
+---
+
+## 5. Blazor Best Practices
+*  [ ] Create the Blazor folder structure in the blazor app
+*  [ ] Add the ServiceFailureSeverity class to the shared/core https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureSeverity.cs
+*  [ ] Add the ViewModelComponentBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelComponentBase
+*  [ ] Add the ViewModelBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelBase
+
+---
+
+## 6. Supabase Storage Setup
+- [ ] Add the Supabase NuGet package ([https://www.nuget.org/packages/supabase](https://www.nuget.org/packages/supabase))
+
+---
+
+## 7. App Implementation Tasks (from app-description.md)
+
+### 🗄️ Create DB Tasks
+- [ ] Create DB for User (fields: Name, Email, etc.)
+- [ ] Create DB for Group (fields: Name, Description, Members)
+- [ ] Create DB for Store (fields: Name, Description, Address, Website, Aisles, GroupId)
+- [ ] Create DB for Item (fields: Name, Description, Category, GroupId)
+- [ ] Create DB for ShoppingList (fields: Title, StoreId, GroupId, IsArchived)
+- [ ] Create DB for StoreItem (fields: StoreId, ItemId, Price, Aisle, Notes)
+
+### 🧩 Model/Entity/DTO Tasks
+- [ ] Create Store model/entity
+- [ ] Define Store DTOs (Create, Update, Read, List)
+- [ ] Create Item model/entity
+- [ ] Define Item DTOs (Create, Update, Read, List)
+- [ ] Create StoreItem model/entity
+- [ ] Define StoreItem DTOs (Create, Update, Read, List)
+- [ ] Create ShoppingList model/entity
+- [ ] Define ShoppingList DTOs (Create, Update, Read, List)
+- [ ] Create Group model/entity
+- [ ] Define Group DTOs (Create, Update, Read, List)
+- [ ] Create User model/entity
+- [ ] Define User DTOs (Profile, Registration, etc.)
+
+### 🛠️ Service Tasks
+- [ ] Implement Store service (CRUD logic)
+- [ ] Implement Item service (CRUD logic)
+- [ ] Implement StoreItem service (CRUD logic)
+- [ ] Implement ShoppingList service (CRUD logic, archive/unarchive)
+- [ ] Implement Group service (CRUD logic, manage members)
+- [ ] Implement User service (profile, registration, group membership)
+
+### 🌐 API Endpoint Tasks
+- [ ] Create API endpoints for Store CRUD
+- [ ] Create API endpoints for Item CRUD
+- [ ] Create API endpoints for StoreItem CRUD
+- [ ] Create API endpoints for ShoppingList CRUD
+- [ ] Create API endpoints for Group CRUD and membership
+- [ ] Create API endpoints for User profile and group membership
+
+### 🖥️ Blazor UI Tasks
+- [ ] Clean up the Blazor app and make sure to remove existing files that are not needed and move any files that are in the wrong location
+- [ ] Build Blazor page: Store List
+- [ ] Build Blazor page: Store Details
+- [ ] Build Blazor page: Create Store
+- [ ] Build Blazor page: Edit Store
+- [ ] Build Blazor page: Delete Store (with confirmation)
+- [ ] Add Store management to navigation/menu
+- [ ] Build Blazor page: Item List
+- [ ] Build Blazor page: Item Details
+- [ ] Build Blazor page: Create Item
+- [ ] Build Blazor page: Edit Item
+- [ ] Build Blazor page: Delete Item
+- [ ] Add Item management to navigation/menu
+- [ ] Build Blazor component: Manage StoreItems within Store context
+- [ ] Build Blazor component: Manage StoreItems within ShoppingList context
+- [ ] Build Blazor page: Shopping List Overview (per group)
+- [ ] Build Blazor page: Shopping List Details (with items)
+- [ ] Build Blazor page: Create Shopping List
+- [ ] Build Blazor page: Edit Shopping List
+- [ ] Build Blazor page: Archive Shopping List
+- [ ] Build Blazor page: Unarchive Shopping List
+- [ ] Add ShoppingList management to navigation/menu
+- [ ] Build Blazor page: Group List
+- [ ] Build Blazor page: Group Details (members, lists)
+- [ ] Build Blazor page: Create Group
+- [ ] Build Blazor page: Edit Group
+- [ ] Build Blazor page: Manage Group Members
+- [ ] Add Group management to navigation/menu
+- [ ] Build Blazor page: User Profile
+- [ ] Build Blazor page: User Registration
+- [ ] Build Blazor page: User Login (if not handled by external auth)
+- [ ] Build Blazor page: Manage Group Memberships 
