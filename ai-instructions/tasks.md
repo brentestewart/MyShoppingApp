@@ -94,7 +94,7 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [x] Implement Store service (CRUD logic)
 - [x] Implement Item service (CRUD logic)
 - [x] Implement StoreItem service (CRUD logic)
-- [ ] Implement ShoppingList service (CRUD logic, archive/unarchive)
+- [x] Implement ShoppingList service (CRUD logic, archive/unarchive)
 - [ ] Implement Group service (CRUD logic, manage members)
 - [ ] Implement User service (profile, registration, group membership)
 
