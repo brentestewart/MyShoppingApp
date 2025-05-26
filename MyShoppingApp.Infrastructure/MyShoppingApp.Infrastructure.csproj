@@ -6,6 +6,10 @@
     <ProjectReference Include="..\MyShoppingApp.Shared\MyShoppingApp.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="supabase" Version="1.1.1" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

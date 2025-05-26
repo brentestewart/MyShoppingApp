@@ -46,17 +46,17 @@ These servers are a dependency for other tasks, so they should appear near the t
 ---
 
 ## 5. Blazor Best Practices
-*  [ ] Create the Blazor folder structure in the blazor app
-*  [ ] Add the Severity class to the shared class library. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/Severity.cs
-*  [ ] Add the ServiceFailureException class to the shared class library. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureException.cs
-*  [ ] Add the ServiceFailureSeverity class to the shared/core https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureSeverity.cs
-*  [ ] Add the ViewModelComponentBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelComponentBase
-*  [ ] Add the ViewModelBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelBase
+*  [x] Create the Blazor folder structure in the blazor app
+*  [x] Add the Severity class to the shared class library. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/Severity.cs
+*  [x] Add the ServiceFailureException class to the shared class library. Make sure to update the namespace for the new file. https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureException.cs
+*  [x] Add the ServiceFailureSeverity class to the shared/core https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ServiceFailureSeverity.cs
+*  [x] Add the ViewModelComponentBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelComponentBase
+*  [x] Add the ViewModelBase.cs file to the blazor app https://raw.githubusercontent.com/brentestewart/AI-Coding-Resources/refs/heads/main/code/blazor/ViewModelBase
 
 ---
 
 ## 6. Supabase Storage Setup
-- [ ] Add the Supabase NuGet package ([https://www.nuget.org/packages/supabase](https://www.nuget.org/packages/supabase))
+- [x] Add the Supabase NuGet package to the project/layer that should directly access the data ([https://www.nuget.org/packages/supabase](https://www.nuget.org/packages/supabase))
 
 ---
 

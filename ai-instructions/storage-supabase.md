@@ -15,7 +15,7 @@ This setup document is used to provision, initialize, and integrate Supabase sto
 
 ## ✅ Tasks
 
-- [ ] Add the Supabase NuGet package ([https://www.nuget.org/packages/supabase](https://www.nuget.org/packages/supabase))
+- [ ] Add the Supabase NuGet package to the project/layer that should directly access the data ([https://www.nuget.org/packages/supabase](https://www.nuget.org/packages/supabase))
 
 
 ### 🔧 Supabase Setup
