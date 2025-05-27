@@ -3,5 +3,41 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": []
+    "configurations": [
+        {
+            "name": "Launch and Debug Blazor WebAssembly in Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5161",
+            "webRoot": "${workspaceFolder}/MyShoppingApp.WebApp",
+            "timeout": 30000,
+            "preLaunchTask": "build",
+            "presentation": {
+                "group": "web",
+                "order": 1
+            }
+        },
+        {
+            "name": "Run Blazor WebAssembly App",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/MyShoppingApp.WebApp/bin/Debug/net8.0/MyShoppingApp.WebApp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/MyShoppingApp.WebApp",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Blazor: Full Debug",
+            "configurations": [
+                "Run Blazor WebAssembly App",
+                "Launch and Debug Blazor WebAssembly in Chrome"
+            ]
+        }
+    ]
 }

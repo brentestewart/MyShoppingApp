@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>myshoppingapp-webapp-2024</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyShoppingApp.Application\MyShoppingApp.Application.csproj" />
+    <ProjectReference Include="..\MyShoppingApp.Domain\MyShoppingApp.Domain.csproj" />
+    <ProjectReference Include="..\MyShoppingApp.Infrastructure\MyShoppingApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\MyShoppingApp.Shared\MyShoppingApp.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

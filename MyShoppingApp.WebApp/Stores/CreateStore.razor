@@ -1,0 +1,64 @@
+@using static Microsoft.AspNetCore.Components.Web.RenderMode
+@rendermode InteractiveServer
+@page "/stores/create"
+@using MyShoppingApp.WebApp.Stores
+@using MyShoppingApp.WebApp.Components.Core
+@inherits ViewModelComponentBase<CreateStoreViewModel>
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components
+
+<h3>Create Store</h3>
+
+<EditForm Model="ViewModel.Store" OnValidSubmit="ViewModel.CreateAsync" FormName="CreateStoreForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label>Name:</label>
+        <InputText @bind-Value="ViewModel.Store.Name" />
+    </div>
+    <div>
+        <label>Description:</label>
+        <InputText @bind-Value="ViewModel.Store.Description" />
+    </div>
+    <div>
+        <label>Street:</label>
+        <InputText @bind-Value="ViewModel.Store.Address.Street" />
+    </div>
+    <div>
+        <label>City:</label>
+        <InputText @bind-Value="ViewModel.Store.Address.City" />
+    </div>
+    <div>
+        <label>State:</label>
+        <InputText @bind-Value="ViewModel.Store.Address.State" />
+    </div>
+    <div>
+        <label>Zip Code:</label>
+        <InputText @bind-Value="ViewModel.Store.Address.ZipCode" />
+    </div>
+    <div>
+        <label>Website:</label>
+        <InputText @bind-Value="ViewModel.Store.Website" />
+    </div>
+    <div>
+        <label>Aisles (comma separated):</label>
+        <InputText @bind-Value="ViewModel.AislesInput" />
+    </div>
+    <div>
+        <label>Group Id:</label>
+        <InputText @bind-Value="ViewModel.GroupIdInput" />
+    </div>
+    <button type="submit">Create</button>
+</EditForm>
+
+<!-- Debug: Show the current value of the Name field -->
+<p><b>Debug Name:</b> @ViewModel.Store.Name</p>
+<p><b>Debug ViewModel Hash:</b> @ViewModel.GetHashCode()</p>
+<p><b>Debug Store Hash:</b> @ViewModel.Store.GetHashCode()</p>
+
+@if (!string.IsNullOrEmpty(ViewModel.Message))
+{
+    <div>@ViewModel.Message</div>
+}
+
+<a href="/stores">Back to Store List</a> 

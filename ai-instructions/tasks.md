@@ -112,8 +112,8 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [x] Build Blazor page: Store Details
 - [x] Build Blazor page: Create Store
 - [x] Build Blazor page: Edit Store
-- [ ] Build Blazor page: Delete Store (with confirmation)
-- [ ] Add Store management to navigation/menu
+- [x] Build Blazor page: Delete Store (with confirmation)
+- [x] Add Store management to navigation/menu
 - [ ] Build Blazor page: Item List
 - [ ] Build Blazor page: Item Details
 - [ ] Build Blazor page: Create Item
@@ -145,3 +145,16 @@ These servers are a dependency for other tasks, so they should appear near the t
 ## Other Completed Tasks
 - [x] Secure Supabase config with appsettings/user-secrets
 - [x] Clean DI setup 
+
+---
+
+## Blazor Web App Migration Tasks
+- [ ] Create a new Blazor Web App project (dotnet new blazor)
+- [ ] Add existing projects (Application, Domain, Infrastructure, Shared) to the new solution
+- [ ] Add project references in the new Blazor Web App
+- [ ] Move/copy custom pages and ViewModels to the new app
+- [ ] Update namespaces in copied files
+- [ ] Register services and ViewModels in Program.cs
+- [ ] Add @rendermode InteractiveServer to interactive pages/components
+- [ ] Build and test the new app
+- [ ] Clean up old web project if desired 
