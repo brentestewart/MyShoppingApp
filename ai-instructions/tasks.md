@@ -114,12 +114,12 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [x] Build Blazor page: Edit Store
 - [x] Build Blazor page: Delete Store (with confirmation)
 - [x] Add Store management to navigation/menu
-- [ ] Build Blazor page: Item List
-- [ ] Build Blazor page: Item Details
-- [ ] Build Blazor page: Create Item
-- [ ] Build Blazor page: Edit Item
-- [ ] Build Blazor page: Delete Item
-- [ ] Add Item management to navigation/menu
+- [x] Build Blazor page: Item List
+- [x] Build Blazor page: Item Details
+- [x] Build Blazor page: Create Item
+- [x] Build Blazor page: Edit Item
+- [x] Build Blazor page: Delete Item
+- [x] Add Item management to navigation/menu
 - [ ] Build Blazor component: Manage StoreItems within Store context
 - [ ] Build Blazor component: Manage StoreItems within ShoppingList context
 - [ ] Build Blazor page: Shopping List Overview (per group)
@@ -129,11 +129,11 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [ ] Build Blazor page: Archive Shopping List
 - [ ] Build Blazor page: Unarchive Shopping List
 - [ ] Add ShoppingList management to navigation/menu
-- [ ] Build Blazor page: Group List
-- [ ] Build Blazor page: Group Details (members, lists)
-- [ ] Build Blazor page: Create Group
-- [ ] Build Blazor page: Edit Group
-- [ ] Build Blazor page: Manage Group Members
+- [x] Build Blazor page: Group List
+- [x] Build Blazor page: Group Details (members, lists)
+- [x] Build Blazor page: Create Group
+- [x] Build Blazor page: Edit Group
+- [x] Build Blazor page: Manage Group Members
 - [ ] Add Group management to navigation/menu
 - [ ] Build Blazor page: User Profile
 - [ ] Build Blazor page: User Registration

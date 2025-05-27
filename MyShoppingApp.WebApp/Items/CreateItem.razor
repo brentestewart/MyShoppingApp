@@ -1,0 +1,64 @@
+@rendermode InteractiveServer
+@page "/items/create"
+@using Microsoft.AspNetCore.Components.Forms
+@inherits ViewModelComponentBase<CreateItemViewModel>
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create Item</PageTitle>
+
+<h3>Create Item</h3>
+
+<EditForm Model="ViewModel" OnValidSubmit="CreateItemAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label>Name</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Name" />
+    </div>
+    <div class="mb-3">
+        <label>Description</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Description" />
+    </div>
+    <div class="mb-3">
+        <label>Category</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Category" />
+    </div>
+    <div class="mb-3">
+        <label>Group</label>
+        <InputSelect class="form-control" @bind-Value="ViewModel.GroupIdInput">
+            <option value="">-- None --</option>
+            @foreach (var group in ViewModel.Groups)
+            {
+                <option value="@group.Id">@group.Name</option>
+            }
+        </InputSelect>
+    </div>
+    <button class="btn btn-primary" type="submit" disabled="@ViewModel.IsBusy">Create</button>
+    <button class="btn btn-secondary ms-2" type="button" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@if (ViewModel.ErrorMessage is not null)
+{
+    <div class="mt-3 alert alert-danger">@ViewModel.ErrorMessage</div>
+}
+@if (ViewModel.IsSuccess)
+{
+    <div class="mt-3 alert alert-success">Item created successfully! Redirecting...</div>
+}
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadGroupsAsync();
+    }
+    private async Task CreateItemAsync()
+    {
+        await ViewModel.CreateAsync();
+        if (ViewModel.IsSuccess)
+        {
+            await Task.Delay(1000);
+            NavigationManager.NavigateTo("/items");
+        }
+    }
+    private void Cancel() => NavigationManager.NavigateTo("/items");
+} 
