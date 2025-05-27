@@ -33,6 +33,7 @@ builder.Services.AddTransient<ItemListViewModel>();
 builder.Services.AddTransient<ItemDetailsViewModel>();
 builder.Services.AddTransient<CreateItemViewModel>();
 builder.Services.AddTransient<EditItemViewModel>();
+builder.Services.AddTransient<ManageStoreItemsViewModel>();
 builder.Services.AddTransient<IGroupService, GroupService>();
 
 var app = builder.Build();

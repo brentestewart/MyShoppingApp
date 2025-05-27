@@ -120,7 +120,7 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [x] Build Blazor page: Edit Item
 - [x] Build Blazor page: Delete Item
 - [x] Add Item management to navigation/menu
-- [ ] Build Blazor component: Manage StoreItems within Store context
+- [x] Build Blazor component: Manage StoreItems within Store context
 - [ ] Build Blazor component: Manage StoreItems within ShoppingList context
 - [ ] Build Blazor page: Shopping List Overview (per group)
 - [ ] Build Blazor page: Shopping List Details (with items)

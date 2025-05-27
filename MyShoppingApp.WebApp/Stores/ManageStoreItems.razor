@@ -1,0 +1,79 @@
+@rendermode InteractiveServer
+@page "/stores/{StoreId:guid}/items"
+@inherits ViewModelComponentBase<ManageStoreItemsViewModel>
+@inject NavigationManager NavigationManager
+
+<PageTitle>Manage Store Items</PageTitle>
+
+<h3>Manage Store Items</h3>
+
+@if (ViewModel.IsBusy)
+{
+    <p>Loading store items...</p>
+}
+else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Aisle</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var storeItem in ViewModel.StoreItems)
+            {
+                <tr>
+                    <td>@ViewModel.GetItemName(storeItem.ItemId)</td>
+                    <td>@storeItem.Aisle</td>
+                    <td>@storeItem.Price</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" @onclick="() => ViewModel.DeleteStoreItemAsync(storeItem.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h5>Add Store Item</h5>
+    <EditForm Model="ViewModel" OnValidSubmit="ViewModel.AddStoreItemAsync">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="mb-3">
+            <label>Item</label>
+            <InputSelect class="form-control" @bind-Value="ViewModel.SelectedItemId">
+                <option value="">-- Select Item --</option>
+                @foreach (var item in ViewModel.AvailableItems)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="mb-3">
+            <label>Aisle</label>
+            <InputText class="form-control" @bind-Value="ViewModel.Aisle" />
+        </div>
+        <div class="mb-3">
+            <label>Price</label>
+            <InputNumber class="form-control" @bind-Value="ViewModel.Price" />
+        </div>
+        <button class="btn btn-primary" type="submit" disabled="@ViewModel.IsBusy">Add</button>
+    </EditForm>
+}
+
+<a class="btn btn-secondary mt-3" href="/stores/view/@StoreId">Back to Store</a>
+
+@code {
+    [Parameter]
+    public Guid StoreId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadAsync(StoreId);
+    }
+} 

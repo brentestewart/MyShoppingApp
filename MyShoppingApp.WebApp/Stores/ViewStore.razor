@@ -1,0 +1,47 @@
+@rendermode InteractiveServer
+@page "/stores/view/{Id:guid}"
+@inherits ViewModelComponentBase<StoreDetailsViewModel>
+@inject NavigationManager NavigationManager
+
+<PageTitle>Store Details</PageTitle>
+
+<h3>Store Details</h3>
+
+@if (ViewModel.IsBusy)
+{
+    <p>Loading store details...</p>
+}
+else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
+}
+else if (ViewModel.Store is not null)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <h4 class="card-title">@ViewModel.Store.Name</h4>
+            <p class="card-text">@ViewModel.Store.Description</p>
+            <dl class="row">
+                <dt class="col-sm-3">Group</dt>
+                <dd class="col-sm-9">@ViewModel.Store.GroupId</dd>
+            </dl>
+            <a class="btn btn-primary" href="/stores/@ViewModel.Store.Id/items">Manage Store Items</a>
+        </div>
+    </div>
+}
+else
+{
+    <p>Store not found.</p>
+}
+
+<a class="btn btn-secondary mt-3" href="/stores">Back to Store List</a>
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadAsync(Id);
+    }
+} 

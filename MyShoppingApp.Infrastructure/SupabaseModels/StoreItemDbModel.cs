@@ -3,13 +3,15 @@ using Supabase.Postgrest.Models;
 
 namespace MyShoppingApp.Infrastructure.SupabaseModels;
 
-[Table("store_items")]
+[Table("storeitems")]
 public class StoreItemDbModel : BaseModel
 {
     [PrimaryKey("store_id")]
+    [Column("store_id")]
     public Guid StoreId { get; set; }
 
     [PrimaryKey("item_id")]
+    [Column("item_id")]
     public Guid ItemId { get; set; }
 
     [Column("price")]

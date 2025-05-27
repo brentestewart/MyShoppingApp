@@ -36,4 +36,21 @@ public class StoreDetailsViewModel : ViewModelBase
             IsBusy = false;
         }
     }
+
+    public async Task LoadAsync(Guid id)
+    {
+        IsBusy = true;
+        try
+        {
+            Store = await _storeService.GetByIdAsync(id);
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Failed to load store: {ex.Message}";
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
 } 

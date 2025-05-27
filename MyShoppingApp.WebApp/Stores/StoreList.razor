@@ -37,6 +37,7 @@ else if (ViewModel.Stores.Any())
                     <td>@store.Description</td>
                     <td>@store.GroupId</td>
                     <td>
+                        <a class="btn btn-sm btn-info me-2" href="/stores/view/@store.Id">View</a>
                         <a class="btn btn-sm btn-secondary" href="/stores/edit/@store.Id">Edit</a>
                     </td>
                 </tr>
