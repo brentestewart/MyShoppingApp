@@ -9,52 +9,63 @@
 
 <h3>Create Store</h3>
 
+@code {
+    private bool _showAddress = false;
+    private void ToggleAddress()
+    {
+        _showAddress = !_showAddress;
+    }
+}
+
 <EditForm Model="ViewModel.Store" OnValidSubmit="ViewModel.CreateAsync" FormName="CreateStoreForm">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <div>
-        <label>Name:</label>
-        <InputText @bind-Value="ViewModel.Store.Name" />
+    <div class="mb-3">
+        <label class="form-label">Name:</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Store.Name" />
     </div>
-    <div>
-        <label>Description:</label>
-        <InputText @bind-Value="ViewModel.Store.Description" />
+    <div class="mb-3">
+        <label class="form-label">Description:</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Store.Description" />
     </div>
-    <div>
-        <label>Street:</label>
-        <InputText @bind-Value="ViewModel.Store.Address.Street" />
+    <button class="btn btn-outline-secondary mb-3" type="button" @onclick="ToggleAddress">
+        @(_showAddress ? "Hide Address Details" : "Show Address Details")
+    </button>
+    @if (_showAddress)
+    {
+        <div class="card card-body mb-3">
+            <div class="mb-3">
+                <label class="form-label">Street:</label>
+                <InputText class="form-control" @bind-Value="ViewModel.Store.Address.Street" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">City:</label>
+                <InputText class="form-control" @bind-Value="ViewModel.Store.Address.City" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">State:</label>
+                <InputText class="form-control" @bind-Value="ViewModel.Store.Address.State" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Zip Code:</label>
+                <InputText class="form-control" @bind-Value="ViewModel.Store.Address.ZipCode" />
+            </div>
+        </div>
+    }
+    <div class="mb-3">
+        <label class="form-label">Website:</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Store.Website" />
     </div>
-    <div>
-        <label>City:</label>
-        <InputText @bind-Value="ViewModel.Store.Address.City" />
+    <div class="mb-3">
+        <label class="form-label">Aisles (comma separated):</label>
+        <InputText class="form-control" @bind-Value="ViewModel.AislesInput" />
     </div>
-    <div>
-        <label>State:</label>
-        <InputText @bind-Value="ViewModel.Store.Address.State" />
+    <div class="mb-3">
+        <label class="form-label">Group Id:</label>
+        <InputText class="form-control" @bind-Value="ViewModel.GroupIdInput" />
     </div>
-    <div>
-        <label>Zip Code:</label>
-        <InputText @bind-Value="ViewModel.Store.Address.ZipCode" />
-    </div>
-    <div>
-        <label>Website:</label>
-        <InputText @bind-Value="ViewModel.Store.Website" />
-    </div>
-    <div>
-        <label>Aisles (comma separated):</label>
-        <InputText @bind-Value="ViewModel.AislesInput" />
-    </div>
-    <div>
-        <label>Group Id:</label>
-        <InputText @bind-Value="ViewModel.GroupIdInput" />
-    </div>
-    <button type="submit">Create</button>
+    <button type="submit" class="btn btn-primary">Create</button>
 </EditForm>
-
-<!-- Debug: Show the current value of the Name field -->
-<p><b>Debug Name:</b> @ViewModel.Store.Name</p>
-<p><b>Debug ViewModel Hash:</b> @ViewModel.GetHashCode()</p>
-<p><b>Debug Store Hash:</b> @ViewModel.Store.GetHashCode()</p>
 
 @if (!string.IsNullOrEmpty(ViewModel.Message))
 {

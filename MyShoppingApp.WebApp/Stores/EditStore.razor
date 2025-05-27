@@ -18,46 +18,53 @@ else
     <EditForm Model="ViewModel.Store" OnValidSubmit="ViewModel.UpdateAsync" FormName="EditStoreForm">
         <DataAnnotationsValidator />
         <ValidationSummary />
-        <div>
-            <label>Name:</label>
-            <InputText @bind-value="ViewModel.Store.Name" />
+        <div class="mb-3">
+            <label class="form-label">Name:</label>
+            <InputText class="form-control" @bind-value="ViewModel.Store.Name" />
         </div>
-        <div>
-            <label>Description:</label>
-            <InputText @bind-value="ViewModel.Store.Description" />
+        <div class="mb-3">
+            <label class="form-label">Description:</label>
+            <InputText class="form-control" @bind-value="ViewModel.Store.Description" />
         </div>
-        <div>
-            <label>Street:</label>
-            <InputText @bind-value="ViewModel.Store.Address.Street" />
+        <button class="btn btn-outline-secondary mb-3" type="button" @onclick="ToggleAddress">
+            @(_showAddress ? "Hide Address Details" : "Show Address Details")
+        </button>
+        @if (_showAddress)
+        {
+            <div class="card card-body mb-3">
+                <div class="mb-3">
+                    <label class="form-label">Street:</label>
+                    <InputText class="form-control" @bind-value="ViewModel.Store.Address.Street" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">City:</label>
+                    <InputText class="form-control" @bind-value="ViewModel.Store.Address.City" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">State:</label>
+                    <InputText class="form-control" @bind-value="ViewModel.Store.Address.State" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Zip Code:</label>
+                    <InputText class="form-control" @bind-value="ViewModel.Store.Address.ZipCode" />
+                </div>
+            </div>
+        }
+        <div class="mb-3">
+            <label class="form-label">Website:</label>
+            <InputText class="form-control" @bind-value="ViewModel.Store.Website" />
         </div>
-        <div>
-            <label>City:</label>
-            <InputText @bind-value="ViewModel.Store.Address.City" />
+        <div class="mb-3">
+            <label class="form-label">Aisles (comma separated):</label>
+            <InputText class="form-control" @bind-value="ViewModel.AislesInput" />
         </div>
-        <div>
-            <label>State:</label>
-            <InputText @bind-value="ViewModel.Store.Address.State" />
+        <div class="mb-3">
+            <label class="form-label">Group Id:</label>
+            <InputText class="form-control" @bind-value="ViewModel.GroupIdInput" />
         </div>
-        <div>
-            <label>Zip Code:</label>
-            <InputText @bind-value="ViewModel.Store.Address.ZipCode" />
-        </div>
-        <div>
-            <label>Website:</label>
-            <InputText @bind-value="ViewModel.Store.Website" />
-        </div>
-        <div>
-            <label>Aisles (comma separated):</label>
-            <InputText @bind-value="ViewModel.AislesInput" />
-        </div>
-        <div>
-            <label>Group Id:</label>
-            <InputText @bind-value="ViewModel.GroupIdInput" />
-        </div>
-        <button type="submit">Update</button>
+        <button type="submit" class="btn btn-primary me-2">Update</button>
+        <button type="button" class="btn btn-danger" @onclick="ShowDeleteDialog">Delete</button>
     </EditForm>
-
-    <button class="btn btn-danger" @onclick="ShowDeleteDialog">Delete</button>
 
     @if (ShowDeleteConfirmation)
     {
@@ -100,6 +107,7 @@ else
     }
 
     private bool ShowDeleteConfirmation = false;
+    private bool _showAddress = false;
 
     private void ShowDeleteDialog()
     {
@@ -122,5 +130,10 @@ else
         {
             ShowDeleteConfirmation = false;
         }
+    }
+
+    private void ToggleAddress()
+    {
+        _showAddress = !_showAddress;
     }
 } 
