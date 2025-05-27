@@ -140,6 +140,12 @@ These servers are a dependency for other tasks, so they should appear near the t
 - [ ] Build Blazor page: User Login (if not handled by external auth)
 - [ ] Build Blazor page: Manage Group Memberships
 
+### F. Scaffold Users CRUD pages (list, create, edit, delete) using DTOs
+- [x] Scaffold Users CRUD pages (list, create, edit, delete) using DTOs
+- [x] Add navigation to Users CRUD in the main menu
+- [x] Ensure all user pages use @rendermode InteractiveServer for interactivity
+- [x] Implement delete confirmation (using JavaScript confirm dialog)
+
 ---
 
 ## Other Completed Tasks

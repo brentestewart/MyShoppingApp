@@ -1,0 +1,57 @@
+@rendermode InteractiveServer
+@page "/users/edit/{Id:guid}"
+@using Microsoft.AspNetCore.Components.Forms
+@using MyShoppingApp.WebApp.Users
+@using MyShoppingApp.WebApp.Components.Core
+@inherits ViewModelComponentBase<UserEditViewModel>
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit User</PageTitle>
+
+<h3>Edit User</h3>
+
+@if (ViewModel.ErrorMessage is not null)
+{
+    <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
+}
+
+<EditForm Model="ViewModel" OnValidSubmit="UpdateUserAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label>Name</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Name" />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Email" />
+    </div>
+    <button class="btn btn-primary" type="submit" disabled="@ViewModel.IsBusy">Save</button>
+    <button class="btn btn-secondary ms-2" type="button" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@if (ViewModel.IsSuccess)
+{
+    <div class="mt-3 alert alert-success">User updated successfully! Redirecting...</div>
+}
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadAsync(Id);
+    }
+
+    private async Task UpdateUserAsync()
+    {
+        await ViewModel.UpdateAsync();
+        if (ViewModel.IsSuccess)
+        {
+            await Task.Delay(1000);
+            NavigationManager.NavigateTo("/users");
+        }
+    }
+    private void Cancel() => NavigationManager.NavigateTo("/users");
+} 

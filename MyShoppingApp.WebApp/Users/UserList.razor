@@ -1,0 +1,60 @@
+@rendermode InteractiveServer
+@page "/users"
+@using MyShoppingApp.WebApp.Users
+@using MyShoppingApp.WebApp.Components.Core
+@inherits ViewModelComponentBase<UserListViewModel>
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
+
+<PageTitle>Users</PageTitle>
+
+<h3>Users</h3>
+
+@if (ViewModel.ErrorMessage is not null)
+{
+    <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
+}
+
+<button class="btn btn-primary mb-3" type="button" @onclick="NavigateToCreate">Create User</button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in ViewModel.Users)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>
+                    <button class="btn btn-sm btn-secondary me-2" @onclick="() => NavigateToEdit(user.Id)">Edit</button>
+                    <button class="btn btn-sm btn-danger" @onclick="() => ConfirmAndDelete(user.Id)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadAsync();
+    }
+
+    private void NavigateToCreate() => NavigationManager.NavigateTo("/users/create");
+    private void NavigateToEdit(Guid id) => NavigationManager.NavigateTo($"/users/edit/{id}");
+
+    private async Task ConfirmAndDelete(Guid id)
+    {
+        bool confirmed = await JS.InvokeAsync<bool>("confirm", $"Are you sure you want to delete this user?");
+        if (confirmed)
+        {
+            await ViewModel.DeleteAsync(id);
+        }
+    }
+} 
