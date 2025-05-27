@@ -2,6 +2,7 @@ using MyShoppingApp.WebApp.Components;
 using MyShoppingApp.Infrastructure;
 using MyShoppingApp.WebApp.Stores;
 using MyShoppingApp.WebApp.Users;
+using MyShoppingApp.WebApp.Groups;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,9 @@ builder.Services.AddTransient<StoreDetailsViewModel>();
 builder.Services.AddTransient<UserListViewModel>();
 builder.Services.AddTransient<UserCreateViewModel>();
 builder.Services.AddTransient<UserEditViewModel>();
+builder.Services.AddTransient<GroupListViewModel>();
+builder.Services.AddTransient<GroupCreateViewModel>();
+builder.Services.AddTransient<GroupEditViewModel>();
 
 var app = builder.Build();
 

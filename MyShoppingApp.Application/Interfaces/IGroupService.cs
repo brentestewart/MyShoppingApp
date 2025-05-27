@@ -1,4 +1,5 @@
 using MyShoppingApp.Application.DTOs.Group;
+using MyShoppingApp.Application.DTOs.User;
 
 namespace MyShoppingApp.Application.Interfaces;
 
@@ -11,4 +12,5 @@ public interface IGroupService
     Task DeleteAsync(Guid id);
     Task AddMemberAsync(Guid groupId, Guid userId, string role);
     Task RemoveMemberAsync(Guid groupId, Guid userId);
+    Task<List<UserListDto>> GetMembersAsync(Guid groupId);
 } 

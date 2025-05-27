@@ -1,0 +1,91 @@
+@rendermode InteractiveServer
+@page "/groups/edit/{Id:guid}"
+@using Microsoft.AspNetCore.Components.Forms
+@using MyShoppingApp.WebApp.Groups
+@using MyShoppingApp.WebApp.Components.Core
+@inherits ViewModelComponentBase<GroupEditViewModel>
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit Group</PageTitle>
+
+<h3>Edit Group</h3>
+
+@if (ViewModel.ErrorMessage is not null)
+{
+    <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
+}
+
+<EditForm Model="ViewModel" OnValidSubmit="UpdateGroupAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label>Name</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Name" />
+    </div>
+    <div class="mb-3">
+        <label>Description</label>
+        <InputText class="form-control" @bind-Value="ViewModel.Description" />
+    </div>
+    <button class="btn btn-primary" type="submit" disabled="@ViewModel.IsBusy">Save</button>
+    <button class="btn btn-secondary ms-2" type="button" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@if (ViewModel.IsSuccess)
+{
+    <div class="mt-3 alert alert-success">Group updated successfully!</div>
+}
+
+<h4 class="mt-4">Group Members</h4>
+
+<div class="mb-3 d-flex align-items-end gap-2">
+    <InputSelect class="form-select" style="width:auto;min-width:200px;" @bind-Value="ViewModel.NewMemberUserId">
+        <option value="">Select user...</option>
+        @foreach (var user in ViewModel.AllUsers)
+        {
+            <option value="@user.Id">@user.Name (@user.Email)</option>
+        }
+    </InputSelect>
+    <input class="form-control" style="width:120px;" @bind="ViewModel.NewMemberRole" placeholder="Role" />
+    <button class="btn btn-success" @onclick="AddMember" disabled="@IsAddDisabled">Add</button>
+</div>
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in ViewModel.GroupMembers)
+        {
+            <tr>
+                <td>@member.Name</td>
+                <td>@member.Email</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" @onclick="() => RemoveMember(member.Id)">Remove</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadAsync(Id);
+    }
+
+    private async Task UpdateGroupAsync()
+    {
+        await ViewModel.UpdateAsync();
+    }
+    private void Cancel() => NavigationManager.NavigateTo("/groups");
+    private async Task AddMember() => await ViewModel.AddMemberAsync();
+    private async Task RemoveMember(Guid userId) => await ViewModel.RemoveMemberAsync(userId);
+    private bool IsAddDisabled => ViewModel.NewMemberUserId is null;
+} 

@@ -1,7 +1,9 @@
 using MyShoppingApp.Application.DTOs.Group;
+using MyShoppingApp.Application.DTOs.User;
 using MyShoppingApp.Application.Interfaces;
 using Supabase;
 using MyShoppingApp.Infrastructure.SupabaseModels;
+using static Supabase.Postgrest.Constants.Operator;
 
 namespace MyShoppingApp.Infrastructure.Services;
 
@@ -55,16 +57,43 @@ public class GroupService : IGroupService
         await _supabase.From<GroupDbModel>().Where(x => x.Id == id).Delete();
     }
 
-    public Task AddMemberAsync(Guid groupId, Guid userId, string role)
+    public async Task AddMemberAsync(Guid groupId, Guid userId, string role)
     {
-        // Membership logic would go here (likely another table)
-        return Task.CompletedTask;
+        var member = new GroupMemberDbModel
+        {
+            GroupId = groupId,
+            UserId = userId,
+            Role = role,
+            JoinedAt = DateTime.UtcNow
+        };
+        await _supabase.From<GroupMemberDbModel>().Insert(member);
     }
 
-    public Task RemoveMemberAsync(Guid groupId, Guid userId)
+    public async Task RemoveMemberAsync(Guid groupId, Guid userId)
     {
-        // Membership logic would go here (likely another table)
-        return Task.CompletedTask;
+        await _supabase.From<GroupMemberDbModel>()
+            .Where(x => x.GroupId == groupId && x.UserId == userId)
+            .Delete();
+    }
+
+    public async Task<List<UserListDto>> GetMembersAsync(Guid groupId)
+    {
+        // Get all group_members for this group
+        var memberRows = await _supabase.From<GroupMemberDbModel>()
+            .Where(x => x.GroupId == groupId)
+            .Get();
+        var userIds = memberRows.Models.Select(m => m.UserId).ToList();
+        if (!userIds.Any()) return new List<UserListDto>();
+        // Use Postgrest 'in' filter for user IDs
+        var userRows = await _supabase.From<UserDbModel>()
+            .Filter("id", In, userIds)
+            .Get();
+        return userRows.Models.Select(u => new UserListDto
+        {
+            Id = u.Id,
+            Name = u.Name,
+            Email = u.Email
+        }).ToList();
     }
 
     private static GroupReadDto ToReadDto(GroupDbModel model) => new()
